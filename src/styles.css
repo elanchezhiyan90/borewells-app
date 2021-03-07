@@ -1,0 +1,165 @@
+/* You can add global styles to this file, and also import other style files */
+/* Header Section CSS Starts */
+body{
+    overflow-x: hidden;
+}
+
+html,
+body,
+header,
+.jarallax {
+  height: 100%;
+}
+
+.full-page-intro {
+    background-image: url('./assets/images/borewell_bg1.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+    z-index: 0;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .jarallax {
+    height: 100vh;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #82b1ff !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #82b1ff !important;
+  }
+}
+
+h5.custom {
+  letter-spacing: 3px;
+  font-family: 'Permanent Marker', cursive;
+} 
+
+.top-nav-collapse {
+    background-color: #82b1ff !important;
+}
+
+.navbar-brand{
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.nav-item .nav-link:hover {
+    border-bottom: 2px solid white;
+    color: white;
+} 
+/* Header Section CSS Ends */
+
+/* Page Description CSS - Starts */
+.rgba-stylish-strong{
+    background-color: rgb(75, 111, 136) !important;
+}
+/* Page Description CSS - Ends */
+
+/* Google Font CSS -Starts */
+h2 {
+    font-family: 'Kaushan Script', cursive !important;
+}
+/* Google Font CSS Ends */
+
+/* Marquee CSS - Starts */
+marquee img {
+    max-width: 70vw;
+    max-height: 40vh;
+}
+.service-marquee img {
+    max-width: 70vw !important;
+    max-height: 11vh !important;
+}
+.service-marquee {
+  background-color: #82b1ff;
+}
+/* Marquee CSS - Ends */
+
+/* Project Section CSS - Starts */
+.counter {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px
+}
+
+.counter p.count-number {
+    position: relative;
+    font-family: Montserrat,sans-serif;
+    font-size: 45px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    line-height: 1em
+}
+
+.counter h3 {
+    font-family: "Playfair Display",serif;
+    font-style: italic;
+    letter-spacing: 1px
+}
+
+.counter p.count-number:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: 2px;
+    background-color: #ffbf00
+}
+
+.counter h3 {
+    line-height: 1em;
+    margin-bottom: 0
+}
+/* Project Section CSS - Ends */
+
+
+/* Testimonials CSS - Starts */
+.card-up {
+    overflow: hidden;
+    height: 120px;
+    -webkit-border-top-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+    -webkit-border-top-right-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+.avatar {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 5px solid #fff;
+}
+
+.avatar img {
+    max-width: 120px;
+    max-height: 120px;
+}
+/* Testimonials CSS - Ends */
+
+/* Footer Section CSS - Starts */
+.footer-section{
+    background-color: #82b1ff !important;
+    color: white;
+}
+.footer-section img.logo{
+    max-width: 20vw;
+    max-height: 30vh;
+}
+/* Footer Section CSS - Ends */

@@ -1,0 +1,278 @@
+<div class="container-fluid">
+    <h2 class="py-4 font-weight-bold"></h2>
+    <form #quotationForm="ngForm">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex align-items-center">
+                            <i class="material-icons">
+                                account_circle
+                            </i>
+                            Customer Details
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="quotation.name" name="name"
+                                        placeholder="Name" #Name="ngModel" required
+                                        [ngClass]="{'is-invalid': Name.invalid && (Name.touched || quotationForm.submitted) }">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <textarea class="form-control" [(ngModel)]="quotation.address" name="address"
+                                            rows="3" placeholder="Address" #Address="ngModel" required
+                                            [ngClass]="{'is-invalid': Address.invalid && (Address.touched || quotationForm.submitted) }"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="quotation.contactNo"
+                                        name="contactNo" placeholder="Contact No." #ContactNo="ngModel" required
+                                        [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || quotationForm.submitted) }">
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control" [(ngModel)]="quotation.drillingDate"
+                                        name="drillingDate" placeholder="Drilling Date." #DrillingDate="ngModel" required
+                                        [ngClass]="{'is-invalid': DrillingDate.invalid && (DrillingDate.touched || quotationForm.submitted) }">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="quotation.email" name="emailId"
+                                        placeholder="Email ID" #Email="ngModel" required
+                                        [ngClass]="{'is-invalid': Email.invalid && (Email.touched || quotationForm.submitted) }">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="quotation.socialProfile"
+                                        name="socialProfile" placeholder="Social Profile ">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between card-title">
+                            <h4 class="d-flex align-items-center">
+                                <i class="material-icons">
+                                    timeline
+                                </i>
+                                Drilling Price
+                            </h4>
+                            <button class="btn btn-primary" (click)="addDrillingPrice()">+</button>
+                        </div>
+                        <div class="row" *ngFor="let s of quotation.drillingPrices; let i=index">
+                            <label>Drilling charges from {{s.startFeet}} to {{s.endFeet}}</label>
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="startFeet{{i}}" [(ngModel)]="s.startFeet"
+                                        placeholder="Start Feet " #DrillingPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': DrillingPrice.invalid && (DrillingPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="endFeet{{i}}" [(ngModel)]="s.endFeet"
+                                        placeholder="End Feet " #DrillingPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': DrillingPrice.invalid && (DrillingPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="pricePerFeet{{i}}" [(ngModel)]="s.pricePerFeet"
+                                        placeholder="Price Per Feet " #DrillingPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': DrillingPrice.invalid && (DrillingPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between card-title">
+                            <h4 class="d-flex align-items-center">
+                                <i class="material-icons">
+                                    timeline
+                                </i>
+                                Other Price Details
+                            </h4>
+                            
+                        </div>
+                        <div class="row" *ngFor="let s of quotation.otherPrices; let i=index">
+                            <label>{{s.item}}</label>
+                            <div class="col-md-6" *ngIf="i === 0">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="mediumPrice{{i}}" [(ngModel)]="s.mediumPrice"
+                                        placeholder="(Medium)" #MediumPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': MediumPrice.invalid && (MediumPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-6" *ngIf="i === 0">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="heavyPrice{{i}}" [(ngModel)]="s.heavyPrice"
+                                        placeholder="(Heavy) " #HeavyPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': HeavyPrice.invalid && (HeavyPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="i !== 0">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="itemPrice{{i}}" [(ngModel)]="s.itemPrice"
+                                        placeholder="Enter Price" #ItemPrice="ngModel" required
+                                        [ngClass]="{'is-invalid': ItemPrice.invalid && (ItemPrice.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between card-title">
+                            <h4 class="d-flex align-items-center">
+                                <i class="material-icons">
+                                    timeline
+                                </i>
+                                Other Price Details
+                            </h4>
+                            <button class="btn btn-primary" (click)="addExperience()">+</button>
+                        </div>
+                        <div class="row" *ngFor="let ex of quotation.experiences; let i=index">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="employer{{i}}"
+                                        [(ngModel)]="ex.employer" placeholder="Employer" #Employer="ngModel" required
+                                        [ngClass]="{'is-invalid': Employer.invalid && (Employer.touched || quotationForm.submitted) }">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="jobDescription{{i}}"
+                                            [(ngModel)]="ex.jobDescription" rows="3"
+                                            placeholder="Job Description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="jobTitle{{i}}"
+                                        [(ngModel)]="ex.jobTitle" placeholder="Job Title" #JobTitle="ngModel" required
+                                        [ngClass]="{'is-invalid': JobTitle.invalid && (JobTitle.touched || quotationForm.submitted) }">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="exInMonths{{i}}"
+                                        [(ngModel)]="ex.experience" placeholder="Experience in months"
+                                        #Experience="ngModel" required
+                                        [ngClass]="{'is-invalid': Experience.invalid && (Experience.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> -->
+
+                <!-- Education 
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between card-title">
+                            <h4 class="d-flex align-items-center">
+                                <i class="material-icons">
+                                    school
+                                </i>
+                                Education
+                            </h4>
+                            <button class="btn btn-primary" (click)="addEducation()">+</button>
+                        </div>
+                        <div class="row" *ngFor="let ed of quotation.educations; let i=index">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select class="form-control" placeholder="Degree" name="degree{{i}}"
+                                        [(ngModel)]="ed.degree" #Degree="ngModel" required
+                                        [ngClass]="{'is-invalid': Degree.invalid && (Degree.touched || quotationForm.submitted) }">
+                                        <option [value]="d" *ngFor="let d of degrees">{{d}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="college{{i}}" [(ngModel)]="ed.college"
+                                        placeholder="School/College" #College="ngModel" required
+                                        [ngClass]="{'is-invalid': College.invalid && (College.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="passingYear{{i}}"
+                                        [(ngModel)]="ed.passingYear" placeholder="Passing Year" #PassingYear="ngModel"
+                                        required
+                                        [ngClass]="{'is-invalid': PassingYear.invalid && (PassingYear.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="result{{i}}"
+                                        [(ngModel)]="ed.percentage" placeholder="Percentage" #Percentage="ngModel"
+                                        required
+                                        [ngClass]="{'is-invalid': Percentage.invalid && (Percentage.touched || quotationForm.submitted) }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Other Details -->
+
+                <!--<div class="shadow-sm card">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex align-items-center">
+                            <i class="material-icons"> list </i>Other Details
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" [(ngModel)]="quotation.otherDetails"
+                                        name="otherDetails" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="col-md-4">
+                <div class="shadow-sm card action-buttons">
+                    <!-- <button (click)="quotationForm.valid ? generatePdf('open') : ''"
+              class="btn btn-primary d-flex align-items-center justify-content-center">
+              <i class="material-icons">
+                picture_as_pdf
+              </i> <span>Open PDF</span></button> -->
+                    <button (click)="quotationForm.valid ? generatePdf('download') : ''"
+                        class="btn btn-primary d-flex align-items-center justify-content-center">
+                        <i class="material-icons">
+                            cloud_download
+                        </i><span>Download PDF</span></button>
+                    <!-- <button (click)="quotationForm.valid ? generatePdf('print') : ''"
+              class="btn btn-primary d-flex align-items-center justify-content-center">
+              <i class="material-icons">
+                print
+              </i><span>Print PDF</span></button> -->
+
+                    <button type='reset' (click)="resetForm()"
+                        class="btn btn-primary d-flex align-items-center justify-content-center">
+                        <i class="material-icons">
+                            clear
+                        </i><span>Reset</span></button>
+                </div>
+
+                <!-- <div class="card p-4">
+            <div class="form-group">
+              <label class="h4 mb-3" for="">Show your picture in quotation</label>
+              <input type="file" class="form-control-file" (change)="fileChanged($event)" aria-describedby="fileHelpId">
+            </div>
+            <img *ngIf="quotation.profilePic" [src]="quotation.profilePic" class="img-thumbnail">
+          </div> -->
+            </div>
+        </div>
+    </form>
+</div>
